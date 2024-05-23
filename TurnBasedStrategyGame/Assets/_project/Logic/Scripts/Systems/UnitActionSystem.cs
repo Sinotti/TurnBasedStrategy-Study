@@ -33,7 +33,7 @@ public class UnitActionSystem : MonoBehaviour
             // Se selecionar uma unidade o resto (Move) não executa
             if (TryUnitSelect()) return;
 
-            _currentUnit.Move(MouseWorld.GetClickedPosition());
+            _currentUnit.Move(MouseWorld.GetMousePosition());
         }
     }
 

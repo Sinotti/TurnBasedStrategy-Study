@@ -15,10 +15,10 @@ public class MouseWorld : MonoBehaviour
 
     private void Update()
     {
-        transform.position = MouseWorld.GetClickedPosition();
+        transform.position = MouseWorld.GetMousePosition();
     }
 
-    public static Vector3 GetClickedPosition() 
+    public static Vector3 GetMousePosition() 
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, instance._mouseLayerMask);

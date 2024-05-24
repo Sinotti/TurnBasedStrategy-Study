@@ -14,6 +14,9 @@ public class Unit : MonoBehaviour
     [Space(6)]
     [SerializeField] private Animator _anim;
 
+    private CellPosition _currentCellPosition;
+    private CellPosition _newCellPosition;
+
     private Vector3 _targetPos;
     private Vector3 _moveDirection;
 
@@ -21,7 +24,14 @@ public class Unit : MonoBehaviour
     {
         _targetPos = transform.position;
     }
-
+    private void Start()
+    {
+        // Passo a posição desta unidade para a função que retorna em qual célula ela está:
+        _currentCellPosition = LevelGrid.Instance.GetCellGridPos(transform.position); // (A própria unidade envia para o LevelGrid onde está)
+        // Em seguida passo a posição da célula no grid que essa unidade está para a função
+        // atribuí a mesma dentro do CellObject 
+        LevelGrid.Instance.AddUnitAtCellPosition(_currentCellPosition, this);
+    }
     private void Update()
     {
         if (Vector3.Distance(transform.position, _targetPos) > _stoppingDistance)
@@ -37,9 +47,11 @@ public class Unit : MonoBehaviour
         {
             _anim.SetBool("IsWalking", false);
         }
+
+        ChangeCellInGrid();
     }
 
-    public void Move(Vector3 targetPos) 
+    public void MoveUnit(Vector3 targetPos) 
     {
         _targetPos = targetPos;
     }
@@ -47,5 +59,17 @@ public class Unit : MonoBehaviour
     private void PlayerRotation() 
     {
         transform.forward = Vector3.Lerp(transform.forward, _moveDirection, Time.deltaTime * _rotationSpeed);
+    }
+
+    public void ChangeCellInGrid() 
+    {
+        _newCellPosition = LevelGrid.Instance.GetCellGridPos(transform.position);
+
+        if (_newCellPosition != _currentCellPosition)
+        {
+            // Move a unidade de posição da célula no LevelGrid
+            LevelGrid.Instance.UnitMovedCellPosition(this, _currentCellPosition, _newCellPosition);
+            _currentCellPosition = _newCellPosition; // Depois atualiza a posição da célula na própria unidade
+        }
     }
 }

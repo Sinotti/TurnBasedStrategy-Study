@@ -5,14 +5,19 @@ using UnityEngine;
 
 public class CellDebugObject : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro _textMeshPro;
-    
+    [SerializeField] private TextMeshPro _cellPositionTMP;
     private CellObject _cellObject;
 
-    public void SetCellObjectValue(CellObject cellObject) 
+    private void Update()
+    {
+        RefreshDebugValues();
+    }
+    private void RefreshDebugValues() 
+    {
+        _cellPositionTMP.text = _cellObject.ToString();
+    }
+    public void SetDebugCellPos(CellObject cellObject) 
     {
         _cellObject = cellObject;
-
-        _textMeshPro.text = _cellObject.ToString();
     }
 }

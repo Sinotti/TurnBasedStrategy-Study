@@ -1,5 +1,7 @@
 using UnityEngine;
-// Gerencia a criação do Grid (tabela).
+// Gerencia a criação do Grid (tabela). Toda essa funcionalidade ocorre ao instanciar essa classe.
+// As células em sí são coordenadas no mundo, os objetos em sí que
+// representam a célula e armazenam os dados são os CellObjects
 public class GridSystem
 {
     private CellObject[,] _cellObjects; // Array bidimensional
@@ -22,8 +24,8 @@ public class GridSystem
         {
             for(int z = 0; z < verticalCells; z++) 
             {
-                CellPosition currentCellPosition =  new CellPosition(x, z); // Armazena a posição da célula atual no grid
-                // Pega a posição da célula atual e passa para o _cellObject na mesma posição da interação.
+                CellPosition currentCellPosition =  new CellPosition(x, z); // Armazena a posição da célula dentro do grid
+                // Cria um novo CellObject que corresponde as coordenadas da célula no grid
                 _cellObjects[x,z] = new CellObject(this, currentCellPosition);  
             }
         }
@@ -50,13 +52,13 @@ public class GridSystem
                 GameObject debugObject = GameObject.Instantiate(debugPrefab, GetCellWorldPos(currentCellPosition), Quaternion.identity);
                 CellDebugObject cellDebugObject = debugObject.GetComponent<CellDebugObject>();
 
-                cellDebugObject.SetCellObjectValue(GetGridObject(currentCellPosition));
+                cellDebugObject.SetDebugCellPos(GetCellObject(currentCellPosition));
             }
         }
     }
 
     // Entra a posição da celula no grid e saí o CellObject da célula em questão
-    public CellObject GetGridObject(CellPosition cellPosition) 
+    public CellObject GetCellObject(CellPosition cellPosition) 
     {
         return _cellObjects[cellPosition.x, cellPosition.z];
     }

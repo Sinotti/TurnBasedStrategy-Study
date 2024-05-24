@@ -30,10 +30,10 @@ public class UnitActionSystem : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            // Se selecionar uma unidade o resto (Move) não executa
+            // Se selecionar uma unidade o resto (MoveUnit) não executa
             if (TryUnitSelect()) return;
 
-            _currentUnit.Move(MouseWorld.GetMousePosition());
+            _currentUnit.MoveUnit(MouseWorld.GetMousePosition());
         }
     }
 

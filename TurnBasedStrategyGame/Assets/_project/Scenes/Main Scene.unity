@@ -212,7 +212,7 @@ PrefabInstance:
     - target: {fileID: 5892985877893131603, guid: 104e9100676c39b439b361b243481d1b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.594
+      value: 5.74
       objectReference: {fileID: 0}
     - target: {fileID: 5892985877893131603, guid: 104e9100676c39b439b361b243481d1b,
         type: 3}
@@ -222,7 +222,7 @@ PrefabInstance:
     - target: {fileID: 5892985877893131603, guid: 104e9100676c39b439b361b243481d1b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.201041
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5892985877893131603, guid: 104e9100676c39b439b361b243481d1b,
         type: 3}
@@ -607,6 +607,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498291832}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &563485043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 563485044}
+  - component: {fileID: 563485045}
+  m_Layer: 0
+  m_Name: LevelGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &563485044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563485043}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.5279226, y: -5.557528, z: -3.6449614}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 801434439}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &563485045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563485043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c873e0ceade184743aa962c88ab97eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _debugObjects: {fileID: 9208755383909272284, guid: 037ebf3c45f16c449a4d0c0fe34a2456,
+    type: 3}
 --- !u!1 &593147997
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +730,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 563485044}
   - {fileID: 2016155794}
   - {fileID: 593147999}
   m_Father: {fileID: 0}
@@ -919,7 +966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2033949329
 Transform:
   m_ObjectHideFlags: 0
